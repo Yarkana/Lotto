@@ -2,6 +2,7 @@ package felulet;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 public class FrameLotto extends JFrame implements ActionListener{
@@ -33,6 +35,23 @@ public class FrameLotto extends JFrame implements ActionListener{
         this.pnlFoablak = (JPanel)(this.getContentPane());
         this.pnlFoablak.setLayout(new BorderLayout());
         
+        /*MENÜ KEZDÉS*/
+        
+        JMenu fomenu = new JMenu();
+        JMenuItem fajl = new JMenuItem();
+        fajl.setText("Fájl");
+        JSeparator elvalaszto = new JSeparator();
+        JMenuItem kilepes = new JMenuItem();
+        kilepes.setText("Kilépés");
+        
+        fomenu.add(fajl);
+        
+        
+        
+        /*MENÜ VÉGE*/
+        
+        
+        
         this.bttnSorsol = new JButton();
         this.bttnSorsol.setText("Sorsol");
         this.pnlFoablak.add(this.bttnSorsol, BorderLayout.WEST);
@@ -46,7 +65,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         /* CENTER - SZELVÉNY KEZDET*/
         
         this.pnlSzelveny = new JPanel();
-        this.pnlSzelveny.setLayout(new GridLayout(9, 10));
+        this.pnlSzelveny.setLayout(new GridLayout(9, 10, 4, 4));
         for (int i = 0; i < 90; i++) {
             Gomb bttn = new Gomb(i + 1);
             
@@ -91,11 +110,30 @@ public class FrameLotto extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(bttnRendez)) {
+            if (this.lottoSzamok.size() != 5) {
+                JOptionPane.showMessageDialog(this, "Nem jelölt ki 5 számot", "Hiba", JOptionPane.ERROR_MESSAGE);
+            }else{
             this.lottoSzamok.sort(Integer :: compareTo);
             this.lblAllapot.setText(this.lottoSzamok.toString());
+            }
         }
         else if (e.getSource().equals(bttnSorsol)) {
-            this.lblAllapot.setText(this.lblAllapot.getText() + "sajt");    
+            //Component[] gombok = this.pnlSzelveny.getComponents();
+            Random rnd = new Random();
+            for (int i = 0; i < 5; i++) {
+                int szam;
+                do {
+                    szam = rnd.nextInt(90) + 1;
+                } while (this.lottoSzamok.contains(szam));
+                this.lottoSzamok.add(szam);
+            }
+            
+            for (int i = 0; i < this.lottoSzamok.size(); i++) {
+                int index = this.lottoSzamok.get(i) - 1;
+                Gomb g = ((Gomb)this.pnlSzelveny.getComponent(index));
+                g.setBackground(Color.YELLOW);
+                g.setKijelolt();
+            }
         }
         
     }
@@ -116,5 +154,6 @@ public class FrameLotto extends JFrame implements ActionListener{
                 }
             }
     }
+    
 
 }
