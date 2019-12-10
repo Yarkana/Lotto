@@ -2,7 +2,7 @@ package felulet;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +18,8 @@ public class FrameLotto extends JFrame implements ActionListener{
     private JPanel pnlFoablak, pnlMenu, pnlAllapotSav, pnlBeallitasok, pnlSzelveny;
     private JButton bttnSorsol, bttnRendez;
     private JLabel lblAllapot;
+    private JMenuItem sorsol;
+    private JMenuItem kilepes;
     
     private List<Integer> lottoSzamok;
     
@@ -37,16 +39,28 @@ public class FrameLotto extends JFrame implements ActionListener{
         
         /*MENÜ KEZDÉS*/
         
-        JMenu fomenu = new JMenu();
-        JMenuItem fajl = new JMenuItem();
-        fajl.setText("Fájl");
+        JMenuBar menu = new JMenuBar();
+        JMenu fajlMenu = new JMenu();
+        fajlMenu.setText("Fájl");
+        sorsol = new JMenuItem();
+        sorsol.setText("Sorsol");
         JSeparator elvalaszto = new JSeparator();
-        JMenuItem kilepes = new JMenuItem();
+        kilepes = new JMenuItem();
         kilepes.setText("Kilépés");
         
-        fomenu.add(fajl);
+        menu.add(fajlMenu);
+        fajlMenu.add(sorsol);
+        fajlMenu.add(elvalaszto);
+        fajlMenu.add(kilepes);
         
+        this.pnlMenu = new JPanel();
+       this.pnlMenu.setLayout(new FlowLayout((int) LEFT_ALIGNMENT));
+        this.pnlMenu.add(menu);
         
+        sorsol.addActionListener(this);
+        kilepes.addActionListener(this);
+        
+        this.pnlFoablak.add(this.pnlMenu, BorderLayout.NORTH);
         
         /*MENÜ VÉGE*/
         
@@ -117,7 +131,7 @@ public class FrameLotto extends JFrame implements ActionListener{
             this.lblAllapot.setText(this.lottoSzamok.toString());
             }
         }
-        else if (e.getSource().equals(bttnSorsol)) {
+        else if (e.getSource().equals(bttnSorsol) || e.getSource().equals(sorsol)) {
             //Component[] gombok = this.pnlSzelveny.getComponents();
             Random rnd = new Random();
             for (int i = 0; i < 5; i++) {
@@ -134,6 +148,9 @@ public class FrameLotto extends JFrame implements ActionListener{
                 g.setBackground(Color.YELLOW);
                 g.setKijelolt();
             }
+        }
+        else if (e.getSource().equals(kilepes)){
+        System.exit(0);
         }
         
     }
