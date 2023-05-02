@@ -45,9 +45,9 @@ public class FrameLotto extends JFrame implements ActionListener{
         fajlMenu.setText("파일");
         sorsol = new JMenuItem();
         sorsol.setText("추첨");
-        JSeparator elvalaszto = new JSeparator();
+        JSeparator elvalaszto = new JSeparator(); //분리
         kilepes = new JMenuItem();
-        kilepes.setText("출구");
+        kilepes.setText("종료");
         
         menu.add(fajlMenu);
         fajlMenu.add(sorsol);
@@ -80,7 +80,9 @@ public class FrameLotto extends JFrame implements ActionListener{
         
         this.pnlSzelveny = new JPanel();
         this.pnlSzelveny.setLayout(new GridLayout(9, 10, 4, 4));
-        for (int i = 0; i < 90; i++) {
+        //Exception in thread "AWT-EventQueue-0" java.lang.ArrayIndexOutOfBoundsException: No such child: 85
+        //45로 줄이니까 난 오류
+        for (int i = 0; i < 90; i++) {   //90개의 숫자버튼들..  
             Gomb bttn = new Gomb(i + 1);
             
             bttn.addMouseListener(new MouseAdapter() {
@@ -155,7 +157,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         
     }
 
-    public void gombKattintas(MouseEvent e){  //버튼클릭가능 이벤트..?
+    public void gombKattintas(MouseEvent e){  //위에 90개나 되는 버튼을 누를시 발생함
         Gomb g = (Gomb)(e.getSource());
         if (g.getKijelolt()) {
             lottoSzamok.remove(lottoSzamok.indexOf(g.getErtek()));
