@@ -31,7 +31,7 @@ public class FrameLotto extends JFrame implements ActionListener{
     private void initComponents(){
         lottoSzamok = new ArrayList<>();
         
-        this.setTitle("Lottó 1.0");
+        this.setTitle("Lotto 1.0");
         this.setSize(1024, 768);
         this.setLocationRelativeTo(null);
         
@@ -42,12 +42,12 @@ public class FrameLotto extends JFrame implements ActionListener{
         
         JMenuBar menu = new JMenuBar();
         JMenu fajlMenu = new JMenu();
-        fajlMenu.setText("Fájl");
+        fajlMenu.setText("파일");
         sorsol = new JMenuItem();
-        sorsol.setText("Sorsol");
+        sorsol.setText("추첨");
         JSeparator elvalaszto = new JSeparator();
         kilepes = new JMenuItem();
-        kilepes.setText("Kilépés");
+        kilepes.setText("출구");
         
         menu.add(fajlMenu);
         fajlMenu.add(sorsol);
@@ -67,12 +67,12 @@ public class FrameLotto extends JFrame implements ActionListener{
         
         
         this.bttnSorsol = new JButton();
-        this.bttnSorsol.setText("Sorsol");
+        this.bttnSorsol.setText("추첨");
         this.pnlFoablak.add(this.bttnSorsol, BorderLayout.WEST);
         this.bttnSorsol.addActionListener(this);
         
         this.bttnRendez = new JButton();
-        this.bttnRendez.setText("Rendez");
+        this.bttnRendez.setText("마련?");
         this.pnlFoablak.add(this.bttnRendez, BorderLayout.EAST);
         this.bttnRendez.addActionListener(this);
         
@@ -105,7 +105,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         this.pnlAllapotSav = new JPanel();
         
         this.lblAllapot = new JLabel();
-        this.lblAllapot.setText("Valami");
+        this.lblAllapot.setText("무언가");
         
         
         this.pnlAllapotSav.add(this.lblAllapot);
@@ -125,7 +125,7 @@ public class FrameLotto extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {  //액션 이벤트... 선택부분
         if (e.getSource().equals(bttnRendez)) {
             if (this.lottoSzamok.size() != 5) {
-                JOptionPane.showMessageDialog(this, "Nem jelölt ki 5 számot", "Hiba", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "5개의 숫자를 선택하지 않았습니다.", "잘못", JOptionPane.ERROR_MESSAGE);
             }else{
             this.lottoSzamok.sort(Integer :: compareTo);
             this.lblAllapot.setText(this.lottoSzamok.toString());
