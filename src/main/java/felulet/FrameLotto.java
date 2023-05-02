@@ -79,7 +79,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         /* CENTER - SZELVÉNY KEZDET*/ //센터 구성 시작
         
         this.pnlSzelveny = new JPanel();
-        this.pnlSzelveny.setLayout(new GridLayout(9, 10, 4, 4));
+        this.pnlSzelveny.setLayout(new GridLayout(5, 9, 4, 4));
         //Exception in thread "AWT-EventQueue-0" java.lang.ArrayIndexOutOfBoundsException: No such child: 85
         //45로 줄이니까 난 오류
         for (int i = 0; i < 45; i++) {   //90개의 숫자버튼들..  
@@ -127,7 +127,7 @@ public class FrameLotto extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {  //액션 이벤트... 
         if (e.getSource().equals(bttnRendez)) {
             if (this.lottoSzamok.size() != 5) {
-                JOptionPane.showMessageDialog(this, "5개의 숫자를 선택하지 않았습니다.", "잘못", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "5개의 숫자를 선택하지 않았습니다.", "오류", JOptionPane.ERROR_MESSAGE);
             }else{
             this.lottoSzamok.sort(Integer :: compareTo);  //정리
             this.lblAllapot.setText(this.lottoSzamok.toString());
