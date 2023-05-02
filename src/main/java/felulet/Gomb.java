@@ -5,10 +5,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
+//Gomb는 구라고 함... 색깔과 관련되있는 듯함
 public class Gomb extends JButton{
     
-    private int ertek;
-    private boolean kijelolt;
+    private int ertek;  //값
+    private boolean kijelolt; //지정된 값?
     
     public Gomb(int ertek){
         super();
@@ -18,7 +19,7 @@ public class Gomb extends JButton{
         
         initComponent();
     }
-    public void setKijelolt(){
+    public void setKijelolt(){                //프리바이트변수 겟, 셋등 기본적인 함수들..
         this.kijelolt = !this.kijelolt;
     }
     public boolean getKijelolt(){
@@ -34,15 +35,15 @@ public class Gomb extends JButton{
             this.setBackground(Color.white);
             this.setForeground(Color.red);
             
-            this.addMouseListener(new MouseAdapter(){
+            this.addMouseListener(new MouseAdapter(){      //마우스리스너 오버라이드식
                 @Override
                 public void mouseEntered(MouseEvent e){
-                    setBackground(Color.red);
+                    setBackground(Color.red);               //마우스가 올라가면 빨강색으로
                 }
 
                 @Override
-                public void mouseExited(MouseEvent e) {
-                    setBackground(Color.white);
+                public void mouseExited(MouseEvent e) {  //포인터가 벗어나면 하양색으로 되돌림
+                    setBackground(Color.white);          //이로 인해 노랑색이 하양색으로 돌아가는 버그가 생기는걸로 추정됨  
                 } 
             });
             

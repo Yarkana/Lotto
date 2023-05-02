@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+//주요 시스템설계부분
 public class FrameLotto extends JFrame implements ActionListener{
     
     private JPanel pnlFoablak, pnlMenu, pnlAllapotSav, pnlBeallitasok, pnlSzelveny;
@@ -37,7 +38,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         this.pnlFoablak = (JPanel)(this.getContentPane());
         this.pnlFoablak.setLayout(new BorderLayout());
         
-        /*MENÜ KEZDÉS*/
+        /*MENÜ KEZDÉS*/ // 메뉴 시작
         
         JMenuBar menu = new JMenuBar();
         JMenu fajlMenu = new JMenu();
@@ -62,8 +63,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         
         this.pnlFoablak.add(this.pnlMenu, BorderLayout.NORTH);
         
-        /*MENÜ VÉGE*/
-        
+        /*MENÜ VÉGE*/  // 메뉴 끝
         
         
         this.bttnSorsol = new JButton();
@@ -76,7 +76,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         this.pnlFoablak.add(this.bttnRendez, BorderLayout.EAST);
         this.bttnRendez.addActionListener(this);
         
-        /* CENTER - SZELVÉNY KEZDET*/
+        /* CENTER - SZELVÉNY KEZDET*/ //센터 구성 시작
         
         this.pnlSzelveny = new JPanel();
         this.pnlSzelveny.setLayout(new GridLayout(9, 10, 4, 4));
@@ -96,11 +96,11 @@ public class FrameLotto extends JFrame implements ActionListener{
         
         this.pnlFoablak.add(this.pnlSzelveny, BorderLayout.CENTER);
         
-        /* CENTER - SZELVÉNY VÉG*/
+        /* CENTER - SZELVÉNY VÉG*/  //센터 구성 끝
         
         
         
-        /* ÁLLAPOT SÁV KEZDÉS*/
+        /* ÁLLAPOT SÁV KEZDÉS*/ //상태표시줄 시작?
         
         this.pnlAllapotSav = new JPanel();
         
@@ -111,7 +111,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         this.pnlAllapotSav.add(this.lblAllapot);
         this.pnlFoablak.add(this.pnlAllapotSav, BorderLayout.SOUTH);
         
-        /* ÁLLAPOT SÁV VÉG */
+        /* ÁLLAPOT SÁV VÉG */ //상태 표시줄 끝
         
         this.setResizable(false);
         
@@ -122,7 +122,7 @@ public class FrameLotto extends JFrame implements ActionListener{
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {  //액션 이벤트... 선택부분
         if (e.getSource().equals(bttnRendez)) {
             if (this.lottoSzamok.size() != 5) {
                 JOptionPane.showMessageDialog(this, "Nem jelölt ki 5 számot", "Hiba", JOptionPane.ERROR_MESSAGE);
@@ -155,7 +155,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         
     }
 
-    public void gombKattintas(MouseEvent e){
+    public void gombKattintas(MouseEvent e){  //버튼클릭가능 이벤트..?
         Gomb g = (Gomb)(e.getSource());
         if (g.getKijelolt()) {
             lottoSzamok.remove(lottoSzamok.indexOf(g.getErtek()));
