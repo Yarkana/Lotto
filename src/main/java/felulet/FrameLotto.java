@@ -150,6 +150,8 @@ public class FrameLotto extends JFrame implements ActionListener{
                 int index = this.lottoSzamok.get(i) - 1;         
                 Gomb g = ((Gomb)this.pnlSzelveny.getComponent(index));
                 g.setBackground(Color.YELLOW);
+                g.setForeground(new Color(18, 117, 16));
+                g.setBorder(new LineBorder(new Color(18, 117, 16), 3));
                 g.setKijelolt();
             }
         }
