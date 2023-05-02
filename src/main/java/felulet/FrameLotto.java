@@ -32,7 +32,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         lottoSzamok = new ArrayList<>();
         
         this.setTitle("Lotto 1.0");
-        this.setSize(1024, 768);
+        this.setSize(800, 600);
         this.setLocationRelativeTo(null);
         
         this.pnlFoablak = (JPanel)(this.getContentPane());
@@ -82,7 +82,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         this.pnlSzelveny.setLayout(new GridLayout(5, 9, 4, 4));
         //Exception in thread "AWT-EventQueue-0" java.lang.ArrayIndexOutOfBoundsException: No such child: 85
         //45로 줄이니까 난 오류
-        for (int i = 0; i < 45; i++) {   //90개의 숫자버튼들..  
+        for (int i = 0; i < 45; i++) {   //숫자버튼들 
             Gomb bttn = new Gomb(i + 1);
             
             bttn.addMouseListener(new MouseAdapter() {
@@ -130,7 +130,7 @@ public class FrameLotto extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(this, "5개의 숫자를 선택하지 않았습니다.", "오류", JOptionPane.ERROR_MESSAGE);
             }else{
             this.lottoSzamok.sort(Integer :: compareTo);  //정리
-            this.lblAllapot.setText(this.lottoSzamok.toString());
+            this.lblAllapot.setText(this.lottoSzamok.toString()); //결과?
             }
         }
         else if (e.getSource().equals(bttnSorsol) || e.getSource().equals(sorsol)) {
