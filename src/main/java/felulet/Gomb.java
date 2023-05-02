@@ -5,7 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
-//Gomb는 구라고 함... 색깔과 관련되있는 듯함
+//선택된 값들을 모아놓는 곳
 public class Gomb extends JButton{
     
     private int ertek;  //값

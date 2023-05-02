@@ -140,14 +140,14 @@ public class FrameLotto extends JFrame implements ActionListener{
             for (int i = 0; i < (5 - nowsize); i++) {  
                 int szam;
                 do {
-                    szam = rnd.nextInt(45) + 1;  //45로 줄였을때 오류가난 이유 랜덤값이 1~90임
+                    szam = rnd.nextInt(45) + 1;  //1~45 랜덤
                 } while (this.lottoSzamok.contains(szam)); //노래?
-                this.lottoSzamok.add(szam);  //이건 고른 수랑 공유하는 리스트일텐데...이걸 같이 쓰면 오류가...?
-                                             //일단은 수를 추첨하는게 아니라, 수를 추천해주는 시스템으로 보임
+                this.lottoSzamok.add(szam);  
+                                             //수를 추천함
             }
             
             for (int i = 0; i < this.lottoSzamok.size(); i++) {  //리스트 목록에 있는 수들을 노랑색으로 강조시켜주는 시스템...
-                int index = this.lottoSzamok.get(i) - 1;         //리스트를 비우지않고 무한히 추천하는 수를 넣으니 리스트가 터질 수 밖에
+                int index = this.lottoSzamok.get(i) - 1;         
                 Gomb g = ((Gomb)this.pnlSzelveny.getComponent(index));
                 g.setBackground(Color.YELLOW);
                 g.setKijelolt();
