@@ -136,7 +136,8 @@ public class FrameLotto extends JFrame implements ActionListener{
         else if (e.getSource().equals(bttnSorsol) || e.getSource().equals(sorsol)) {
             //Component[] gombok = this.pnlSzelveny.getComponents();
             Random rnd = new Random();
-            for (int i = 0; i < 5; i++) {
+            int nowsize = this.lottoSzamok.size();  //추첨수가 선택 수의 사이즈에 따라 변동되도록 하여 리스트가 벗어나는 오류 해결
+            for (int i = 0; i < (5 - nowsize); i++) {  
                 int szam;
                 do {
                     szam = rnd.nextInt(45) + 1;  //45로 줄였을때 오류가난 이유 랜덤값이 1~90임
