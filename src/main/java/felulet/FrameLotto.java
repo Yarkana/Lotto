@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import javax.swing.*;
@@ -24,6 +26,7 @@ public class FrameLotto extends JFrame implements ActionListener{
     
     private List<Integer> lottoSzamok;
     private List<Integer> lottoRand; //수를 추첨하기 위한 리스트
+    private List<Integer> lottoChecked; //당첨된 수를 넣음
     
     public FrameLotto(){
         initComponents();
@@ -31,6 +34,8 @@ public class FrameLotto extends JFrame implements ActionListener{
     
     private void initComponents(){
         lottoSzamok = new ArrayList<>();
+        lottoRand = new ArrayList<>();
+        lottoChecked = new ArrayList<>();
         
         this.setTitle("Lotto 1.0");
         this.setSize(800, 600);
@@ -166,6 +171,36 @@ public class FrameLotto extends JFrame implements ActionListener{
                 g.setKijelolt();
             }
         }
+        
+        else if (e.getSource().equals(bttnCheck)){
+            if (this.lottoSzamok.size() == 5) {
+            Random rnd = new Random();
+            lottoRand.clear();
+            lottoChecked.clear();
+        	for (int i = 0; i < 5; i++) {  
+                int Rnum;
+                do {
+                    Rnum = rnd.nextInt(45) + 1;  //1~45 랜덤
+                } while (this.lottoRand.contains(Rnum)); 
+                this.lottoRand.add(Rnum);  
+                                           
+            }
+        	for (int i = 0; i<5; i++) {
+        		if (lottoRand.contains(lottoSzamok.get(i))) {
+                    this.lottoChecked.add(lottoSzamok.get(i));  
+        			
+        		}
+        		
+        	}
+            this.lottoChecked.sort(Integer :: compareTo);  //정리
+            this.lottoRand.sort(Integer :: compareTo);  //정리
+            this.lblAllapot.setText("맞춘 수 : " + this.lottoChecked.toString() + " / 이번추첨 수 : " + this.lottoRand.toString()); //결과출력
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "숫자 5개를 골라주세요.", "오류", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
         else if (e.getSource().equals(kilepes)){
         System.exit(0);
         }
