@@ -68,7 +68,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         
         
         this.bttnSorsol = new JButton();
-        this.bttnSorsol.setText("추첨");
+        this.bttnSorsol.setText("추천");
         this.pnlFoablak.add(this.bttnSorsol, BorderLayout.WEST);
         this.bttnSorsol.addActionListener(this);
 
