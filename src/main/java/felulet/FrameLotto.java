@@ -16,13 +16,14 @@ import javax.swing.border.LineBorder;
 //주요 시스템설계부분
 public class FrameLotto extends JFrame implements ActionListener{
     
-    private JPanel pnlFoablak, pnlMenu, pnlAllapotSav, pnlBeallitasok, pnlSzelveny;
-    private JButton bttnSorsol, bttnRendez;
+    private JPanel pnlFoablak, pnlMenu, pnlAllapotSav, pnlBeallitasok, pnlSzelveny, panelEast;
+    private JButton bttnSorsol, bttnRendez, bttnCheck;
     private JLabel lblAllapot;
     private JMenuItem sorsol;
     private JMenuItem kilepes;
     
     private List<Integer> lottoSzamok;
+    private List<Integer> lottoRand; //수를 추첨하기 위한 리스트
     
     public FrameLotto(){
         initComponents();
@@ -70,11 +71,21 @@ public class FrameLotto extends JFrame implements ActionListener{
         this.bttnSorsol.setText("추첨");
         this.pnlFoablak.add(this.bttnSorsol, BorderLayout.WEST);
         this.bttnSorsol.addActionListener(this);
+
+        this.panelEast = new JPanel();
+        this.panelEast.setLayout(new GridLayout(2, 1, 4, 4));
         
         this.bttnRendez = new JButton();
-        this.bttnRendez.setText("마련?");
-        this.pnlFoablak.add(this.bttnRendez, BorderLayout.EAST);
+        this.bttnRendez.setText("출력");
+        this.panelEast.add(this.bttnRendez);
         this.bttnRendez.addActionListener(this);
+        
+        this.bttnCheck = new JButton();
+        this.bttnCheck.setText("당첨확인");
+        this.panelEast.add(this.bttnCheck);
+        this.bttnCheck.addActionListener(this);
+        
+        this.pnlFoablak.add(this.panelEast, BorderLayout.EAST);
         
         /* CENTER - SZELVÉNY KEZDET*/ //센터 구성 시작
         
