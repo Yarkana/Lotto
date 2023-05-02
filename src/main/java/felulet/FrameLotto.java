@@ -82,7 +82,7 @@ public class FrameLotto extends JFrame implements ActionListener{
         this.pnlSzelveny.setLayout(new GridLayout(9, 10, 4, 4));
         //Exception in thread "AWT-EventQueue-0" java.lang.ArrayIndexOutOfBoundsException: No such child: 85
         //45로 줄이니까 난 오류
-        for (int i = 0; i < 90; i++) {   //90개의 숫자버튼들..  
+        for (int i = 0; i < 45; i++) {   //90개의 숫자버튼들..  
             Gomb bttn = new Gomb(i + 1);
             
             bttn.addMouseListener(new MouseAdapter() {
@@ -139,7 +139,7 @@ public class FrameLotto extends JFrame implements ActionListener{
             for (int i = 0; i < 5; i++) {
                 int szam;
                 do {
-                    szam = rnd.nextInt(90) + 1;  //45로 줄였을때 오류가난 이유 랜덤값이 1~90임
+                    szam = rnd.nextInt(45) + 1;  //45로 줄였을때 오류가난 이유 랜덤값이 1~90임
                 } while (this.lottoSzamok.contains(szam)); //노래?
                 this.lottoSzamok.add(szam);  //이건 고른 수랑 공유하는 리스트일텐데...이걸 같이 쓰면 오류가...?
                                              //일단은 수를 추첨하는게 아니라, 수를 추천해주는 시스템으로 보임
